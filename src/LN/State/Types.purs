@@ -1,5 +1,5 @@
 module LN.State.Types (
-  State,
+  State (..),
   initialState
 ) where
 
@@ -25,7 +25,7 @@ import LN.T
 
 
 
-type State =
+newtype State = State
   { currentPage :: Routes
   , me :: Maybe UserPackResponse
   , meId :: Int
@@ -67,6 +67,7 @@ type State =
 
 initialState :: AVar (Input Unit) -> State
 initialState ch =
+  State
   { currentPage: Home
   , me: Nothing
   , meId: 0

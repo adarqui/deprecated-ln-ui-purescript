@@ -10,7 +10,7 @@ import Halogen.HTML.Properties.Indexed as P
 import Halogen.Themes.Bootstrap3       as B
 
 import LN.Input.Types                  (Input)
-import LN.State.Types                  (State)
+import LN.State.Types                  (State(..))
 import LN.View.Module.OrderBy
 import LN.View.Module.PageNumbers
 import LN.T
@@ -30,7 +30,7 @@ renderView_Portal_Resources st =
 
 
 resources :: State -> ComponentHTML Input
-resources st =
+resources (State st) =
   H.div_ [
     renderPageNumbers st.resourcesPageInfo st.currentPage
   ]

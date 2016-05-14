@@ -31,7 +31,7 @@ eval_CreateThread eval (CompCreateThread InputCreateThread_Nop next) = do
 
 eval_CreateThread eval (CompCreateThread InputCreateThread_Create next) = do
 
-  st <- get
+  (State st) <- get
   let board_id = maybe 0 (\board -> board ^. _BoardResponse .. id_) st.currentBoard
   let mcomp = st.compCreateThread
   case mcomp of

@@ -16,7 +16,7 @@ import Prelude                         (($), (<>))
 
 import LN.View.Util                    (showIfSelf_UserNick)
 import LN.Input.Types                  (Input)
-import LN.State.Types                  (State)
+import LN.State.Types                  (State(..))
 import LN.Router.Internal              (linkToP)
 import LN.Router.Types                 (Routes(..), CRUD(..))
 import LN.T
@@ -47,11 +47,11 @@ usersLayout user_nick st page =
 
 
 renderView_Users :: String -> State -> ComponentHTML Input
-renderView_Users user_nick st =
+renderView_Users user_nick st@(State st') =
   usersLayout user_nick st [
     H.div_ [
       H.h1_ [ H.text "me." ],
-      H.div_ (showUser st.me)
+      H.div_ (showUser st'.me)
     ]
   ]
 

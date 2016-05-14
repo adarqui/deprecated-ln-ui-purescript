@@ -10,7 +10,7 @@ import Prelude                      (map, ($))
 
 import LN.Input.Types               (Input)
 import LN.Router.Types              (Routes(..), CRUD(..))
-import LN.State.Types               (State)
+import LN.State.Types               (State(..))
 import LN.T
 import LN.View.Module.Gravatar
 import LN.View.Module.PageNumbers
@@ -19,7 +19,7 @@ import LN.View.Module.EntityListing
 
 
 renderView_Portal_Users :: State -> ComponentHTML Input
-renderView_Portal_Users st =
+renderView_Portal_Users (State st) =
   renderEntityListing "Users" (
     map (\user ->
       { nick: user ^. _UserSanitizedPackResponse .. user_ ^. _UserSanitizedResponse .. nick_

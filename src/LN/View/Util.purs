@@ -11,13 +11,13 @@ import Halogen.HTML.Indexed as H
 import Optic.Core           ((^.), (..))
 import Prelude              ((==))
 
-import LN.State.Types       (State)
+import LN.State.Types       (State(..))
 import LN.T
 
 
 
 showIfSelf_UserNick :: State -> String -> Array (HTML _ _) -> HTML _ _
-showIfSelf_UserNick st user_nick html =
+showIfSelf_UserNick (State st) user_nick html =
   if b
      then H.div_ html
      else H.div_ []
@@ -29,7 +29,7 @@ showIfSelf_UserNick st user_nick html =
 
 
 showIfSelf :: State -> HTML _ _ -> HTML _ _ -> HTML _ _
-showIfSelf st html_self html_else =
+showIfSelf (State st) html_self html_else =
   if b
      then html_self
      else html_else
